@@ -1,41 +1,54 @@
 ---
 const flavors = [
-  { emoji: '🍉', name: 'Sandía Ice', notes: 'Dulce y refrescante', color: 'from-berry to-mint' },
-  { emoji: '🥭', name: 'Mango Tropical', notes: 'Jugoso e intenso', color: 'from-mango to-berry' },
-  { emoji: '🫐', name: 'Blueberry Mix', notes: 'Frutos del bosque', color: 'from-grape to-ice' },
-  { emoji: '🍓', name: 'Fresa Crema', notes: 'Suave y goloso', color: 'from-berry to-mango' },
-  { emoji: '🍇', name: 'Uva Helada', notes: 'Clásico con toque ice', color: 'from-grape to-berry' },
-  { emoji: '🍋', name: 'Limón Mojito', notes: 'Cítrico y fresco', color: 'from-mint to-ice' },
-  { emoji: '🍑', name: 'Melocotón', notes: 'Dulce de verano', color: 'from-mango to-berry' },
-  { emoji: '🌿', name: 'Menta Polar', notes: 'Frescor extremo', color: 'from-mint to-ice' },
+  { img: 'watermelonice', name: 'Sandía Ice', notes: 'Dulce y refrescante' },
+  { img: 'strawberrywatermelon', name: 'Fresa & Sandía', notes: 'Jugoso veraniego' },
+  { img: 'grapeburst', name: 'Uva Explosiva', notes: 'Intenso y dulce' },
+  { img: 'blueberrysourraspberry', name: 'Arándano & Frambuesa', notes: 'Ácido y fresco' },
+  { img: 'strawberrybanana', name: 'Fresa & Plátano', notes: 'Suave y cremoso' },
+  { img: 'strawberrykiwi', name: 'Fresa & Kiwi', notes: 'Dulce con punto ácido' },
+  { img: 'peachmangopineapple', name: 'Melocotón, Mango & Piña', notes: 'Tropical' },
+  { img: 'kiwipassionfruitguava', name: 'Kiwi, Maracuyá & Guayaba', notes: 'Exótico' },
+  { img: 'lemonlime', name: 'Limón & Lima', notes: 'Cítrico vibrante' },
+  { img: 'cherrycola', name: 'Cherry Cola', notes: 'Refresco clásico' },
+  { img: 'cherrylemon', name: 'Cereza & Limón', notes: 'Dulce y cítrico' },
+  { img: 'mixedberry', name: 'Frutos Rojos', notes: 'Mezcla de bayas' },
+  { img: 'peachberry', name: 'Melocotón & Bayas', notes: 'Dulce y jugoso' },
+  { img: 'blackicedragonfruitstrawberry', name: 'Pitaya, Fresa & Ice', notes: 'Frescor frutal' },
 ];
 ---
 
 <section id="sabores" data-horizontal class="relative bg-ink">
   <div class="flex h-screen items-center overflow-hidden">
-    <div data-htrack class="flex items-center gap-8 px-[8vw] will-change-transform">
+    <div data-htrack class="flex items-center gap-6 px-[8vw] will-change-transform">
       <!-- Panel de intro -->
-      <div class="flex w-[80vw] shrink-0 flex-col justify-center md:w-[42vw]">
+      <div class="flex w-[80vw] shrink-0 flex-col justify-center md:w-[40vw]">
         <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry">/ La colección</p>
-        <h2 class="display-xl text-6xl md:text-8xl">Más de 20<br /><span class="text-gradient">sabores</span></h2>
-        <p class="mt-6 max-w-sm text-lg text-cream/55">Desliza para recorrerlos. Encuentra el tuyo… o cámbialo cada semana.</p>
+        <h2 class="display-xl text-6xl md:text-8xl">Nuestros<br /><span class="text-gradient">sabores</span></h2>
+        <p class="mt-6 max-w-sm text-lg text-cream/55">14 sabores King Pro. Desliza para recorrerlos y encuentra el tuyo.</p>
         <span class="mt-8 inline-flex items-center gap-2 text-sm text-cream/40">Arrastra <span aria-hidden="true">→</span></span>
       </div>
 
-      {flavors.map((f) => (
-        <article class={`group relative flex h-[62vh] w-[78vw] shrink-0 flex-col justify-between overflow-hidden rounded-[2rem] bg-gradient-to-br ${f.color} p-8 sm:w-[46vw] md:w-[30vw]`}>
-          <div class="text-7xl drop-shadow-lg transition-transform duration-500 group-hover:scale-110">{f.emoji}</div>
-          <div>
-            <h3 class="font-display text-3xl font-extrabold text-white">{f.name}</h3>
-            <p class="mt-1 text-white/85">{f.notes}</p>
+      {flavors.map((f, i) => (
+        <article data-tilt class="group relative h-[66vh] w-[74vw] shrink-0 overflow-hidden rounded-[2rem] bg-ink-2 [transform-style:preserve-3d] sm:w-[42vw] md:w-[26vw]">
+          <img
+            src={`/products/${f.img}.png`}
+            alt={`Vapsolo King Pro — ${f.name}`}
+            loading="lazy"
+            class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/40 to-transparent p-6 pt-20">
+            <h3 class="font-display text-2xl font-extrabold text-white">{f.name}</h3>
+            <p class="mt-0.5 text-white/75">{f.notes}</p>
           </div>
-          <span class="absolute right-6 top-6 text-sm font-medium text-white/60">{String(flavors.indexOf(f) + 1).padStart(2, '0')}</span>
+          <span class="absolute right-5 top-5 rounded-full bg-ink/40 px-2.5 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
+            {String(i + 1).padStart(2, '0')}
+          </span>
         </article>
       ))}
 
       <!-- Panel de cierre -->
-      <div class="flex w-[60vw] shrink-0 flex-col justify-center md:w-[30vw]">
-        <h3 class="display-xl text-4xl md:text-5xl">…y muchos<br /><span class="text-gradient">más</span></h3>
+      <div class="flex w-[60vw] shrink-0 flex-col justify-center md:w-[28vw]">
+        <h3 class="display-xl text-4xl md:text-5xl">Tu sabor<br /><span class="text-gradient">te espera</span></h3>
         <a href="#productos" data-magnetic class="mt-6 inline-block w-max rounded-full bg-cream px-7 py-3.5 font-semibold text-ink transition-colors hover:bg-white">
           Ver productos
         </a>
