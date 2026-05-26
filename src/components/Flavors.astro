@@ -29,20 +29,22 @@ const flavors = [
       </div>
 
       {flavors.map((f, i) => (
-        <article data-tilt class="group relative h-[66vh] w-[74vw] shrink-0 overflow-hidden rounded-[2rem] bg-ink-2 [transform-style:preserve-3d] sm:w-[42vw] md:w-[26vw]">
-          <img
-            src={`/products/${f.img}.png`}
-            alt={`Vapsolo King Pro — ${f.name}`}
-            loading="lazy"
-            class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-          />
-          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/40 to-transparent p-6 pt-20">
-            <h3 class="font-display text-2xl font-extrabold text-white">{f.name}</h3>
-            <p class="mt-0.5 text-white/75">{f.notes}</p>
-          </div>
-          <span class="absolute right-5 top-5 rounded-full bg-ink/40 px-2.5 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
+        <article data-tilt class="group relative flex h-[66vh] w-[74vw] shrink-0 flex-col overflow-hidden rounded-[2rem] border border-cream/10 bg-gradient-to-b from-ink-2 to-ink [transform-style:preserve-3d] sm:w-[42vw] md:w-[26vw]">
+          <span class="absolute right-5 top-5 z-10 rounded-full bg-ink/50 px-2.5 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
             {String(i + 1).padStart(2, '0')}
           </span>
+          <div class="relative flex-1 overflow-hidden">
+            <img
+              src={`/products/${f.img}.png`}
+              alt={`Vapsolo King Pro — ${f.name}`}
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            />
+          </div>
+          <div class="border-t border-cream/10 p-5">
+            <h3 class="font-display text-xl font-extrabold text-cream">{f.name}</h3>
+            <p class="mt-0.5 text-sm text-cream/55">{f.notes}</p>
+          </div>
         </article>
       ))}
 
