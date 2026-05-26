@@ -8,7 +8,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /* ═══════════════════════════════ Secuencia de frames del hero ═══════ */
-const FRAME_COUNT = 153;
+const FRAME_COUNT = 192;
 const framePath = (i: number) => `/frames/f_${String(i).padStart(3, '0')}.jpg`;
 const frames: HTMLImageElement[] = [];
 let framesReady = false;
