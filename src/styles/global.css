@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   VAPSOLO — Sistema de diseño (nivel pro)
+   ═══════════════════════════════════════════════════════════════════ */
+@theme {
+  /* Paleta: fondo profundo + acentos vibrantes de fruta */
+  --color-ink: #0a0610;
+  --color-ink-2: #120a1f;
+  --color-cream: #f7f3ec;
+
+  --color-grape: #8b5cf6;
+  --color-berry: #ff4d8d;
+  --color-mango: #ffb020;
+  --color-mint: #2dd4bf;
+  --color-ice: #38bdf8;
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  background-color: var(--color-ink);
+  /* El smooth-scroll lo gestiona Lenis; desactivamos el nativo */
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ── Tipografía utilitaria ──────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+
+.text-gradient {
+  background-image: linear-gradient(100deg, var(--color-berry), var(--color-mango) 45%, var(--color-grape));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bg-gradient-brand {
+  background-image: linear-gradient(120deg, var(--color-grape), var(--color-berry) 50%, var(--color-mango));
+}
+
+/* Texto display gigante y compacto */
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+/* ── Grano de película ──────────────────────────────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Cursor personalizado ───────────────────────────────────────── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  .cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    width: 8px; height: 8px;
+    border-radius: 9999px;
+    background: var(--color-cream);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    width: 44px; height: 44px;
+    border-radius: 9999px;
+    border: 1px solid rgba(247, 243, 236, 0.5);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width .25s var(--ease-out-expo), height .25s var(--ease-out-expo), background-color .25s, border-color .25s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring.is-hover {
+    width: 72px; height: 72px;
+    background: rgba(247, 243, 236, 0.15);
+    border-color: transparent;
+  }
+}
+
+/* ── Reveal: estado inicial (GSAP lo anima) ─────────────────────── */
+[data-reveal] { will-change: transform, opacity; }
+
+/* Línea de palabra para clip-reveal del hero */
+.line-mask { overflow: hidden; display: block; }
+
+/* ── Marquee ────────────────────────────────────────────────────── */
+.marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ── Selección ──────────────────────────────────────────────────── */
+::selection { background: var(--color-berry); color: #fff; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 0; background: transparent; }
+
+/* ── Split de titulares ─────────────────────────────────────────── */
+[data-split] { overflow: hidden; padding-bottom: 0.08em; }
+.char { will-change: transform, opacity; }
+
+/* ── Nav flotante reactivo ──────────────────────────────────────── */
+#site-nav {
+  transition: transform .5s var(--ease-out-expo), background-color .4s ease, backdrop-filter .4s ease, border-color .4s ease;
+  transform: translateY(0);
+  border-bottom: 1px solid transparent;
+}
+#site-nav.nav-hidden { transform: translateY(-110%); }
+#site-nav.nav-solid {
+  background-color: rgba(10, 6, 16, 0.7);
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(247, 243, 236, 0.08);
+}
+
+/* ── Fondo "mesh" animado de sección ────────────────────────────── */
+.mesh { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.mesh::before, .mesh::after {
+  content: "";
+  position: absolute;
+  width: 50vw; height: 50vw;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: blob 18s ease-in-out infinite;
+}
+.mesh::before { background: var(--color-grape); top: -10%; left: -10%; }
+.mesh::after  { background: var(--color-berry); bottom: -15%; right: -10%; animation-delay: -7s; }
+
+/* ── Glass ──────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(247, 243, 236, 0.04);
+  border: 1px solid rgba(247, 243, 236, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

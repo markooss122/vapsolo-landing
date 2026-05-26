@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import AgeGate from '../components/AgeGate.astro';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Vapsolo — El sabor que no se apaga',
+  description = 'Vapers desechables Vapsolo: hasta 8000 caladas, sabores intensos y batería para todo el día. Envío 24/48h. Solo mayores de 18 años.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0610" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_ES" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[10000] flex items-center justify-center bg-ink">
+      <div id="pre-content" class="flex w-full max-w-xs flex-col items-center gap-6 px-6">
+        <span class="font-display text-2xl font-extrabold tracking-[0.4em] text-cream">VAPSOLO</span>
+        <div class="h-px w-full overflow-hidden bg-cream/15">
+          <div id="pre-bar" class="h-full origin-left scale-x-0 bg-gradient-brand"></div>
+        </div>
+        <span id="pre-count" class="font-display text-sm tabular-nums text-cream/60">000</span>
+      </div>
+    </div>
+
+    <!-- Cursor personalizado -->
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+
+    <!-- Grano de película -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <AgeGate />
+    <Nav />
+    <slot />
+
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

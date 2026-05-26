@@ -1,0 +1,51 @@
+---
+// Hero cinemático con secuencia de fotogramas en <canvas> (técnica Apple).
+// El scrubbing lo controla initFrameSequence() en src/scripts/site.ts.
+---
+
+<section id="hero" class="relative h-[460vh] bg-ink">
+  <div class="sticky top-0 h-screen w-full overflow-hidden">
+    <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
+
+    <!-- Velos para profundidad y legibilidad -->
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/55 via-transparent to-ink/85"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,transparent_30%,rgba(10,6,16,0.7)_100%)]"></div>
+
+    <!-- Captions encadenadas al scroll -->
+    <div class="absolute inset-0 z-10 flex items-center justify-center px-6 text-center text-cream">
+      <div class="hero-cap absolute flex flex-col items-center" style="opacity:0">
+        <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-cream/20 bg-cream/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-cream/80 backdrop-blur-sm">
+          Vapers desechables
+        </span>
+        <h1 data-split class="display-xl text-[15vw] leading-[0.86] md:text-[9vw]">
+          El sabor que<br /><span class="text-gradient">no se apaga</span>
+        </h1>
+      </div>
+
+      <div class="hero-cap absolute flex flex-col items-center" style="opacity:0">
+        <p class="display-xl text-[26vw] leading-none md:text-[17vw]">8000</p>
+        <p class="mt-2 text-lg font-medium tracking-wide text-cream/80 md:text-2xl">caladas. Un solo gesto.</p>
+      </div>
+
+      <div class="hero-cap absolute flex flex-col items-center" style="opacity:0">
+        <h2 class="display-xl text-[11vw] leading-none md:text-[6.5vw]">
+          Bienvenido a<br /><span class="text-gradient">Vapsolo</span>
+        </h2>
+        <a
+          href="#productos"
+          data-magnetic
+          class="mt-9 inline-flex items-center gap-2 rounded-full bg-cream px-9 py-4 font-semibold text-ink transition-colors hover:bg-white"
+        >
+          Ver la colección
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pista de scroll -->
+    <div id="hero-hint" class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-cream/60">
+      <span class="text-[0.7rem] font-medium uppercase tracking-[0.3em]">Desliza</span>
+      <span class="h-10 w-px bg-gradient-to-b from-cream/60 to-transparent"></span>
+    </div>
+  </div>
+</section>

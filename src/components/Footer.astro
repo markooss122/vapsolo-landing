@@ -1,0 +1,44 @@
+---
+const year = new Date().getFullYear();
+const cols = [
+  { title: 'Tienda', links: ['Desechables', 'Sabores', 'Packs', 'Novedades'] },
+  { title: 'Ayuda', links: ['Envíos y plazos', 'Devoluciones', 'Contacto', 'FAQ'] },
+  { title: 'Legal', links: ['Aviso legal', 'Privacidad', 'Cookies', 'Términos'] },
+];
+---
+
+<!-- Aviso sanitario obligatorio -->
+<div class="bg-gradient-brand py-3 text-center text-xs font-bold uppercase tracking-wide text-white">
+  ⚠️ Este producto contiene nicotina, una sustancia que crea adicción. Prohibida su venta a menores de 18 años.
+</div>
+
+<footer class="border-t border-cream/10 bg-ink text-cream/65">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.5fr_repeat(3,1fr)]">
+    <div>
+      <span class="font-display text-2xl font-extrabold tracking-tight text-cream">Vapsolo</span>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed">
+        Vapers desechables con sabor de verdad. Calidad certificada y envío rápido a toda España.
+      </p>
+    </div>
+
+    {cols.map((c) => (
+      <div>
+        <h3 class="font-display font-semibold text-cream">{c.title}</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {c.links.map((l) => (
+            <li><a href="#" class="transition-colors hover:text-cream">{l}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="border-t border-cream/10">
+    <div class="mx-auto max-w-6xl px-6 py-6 text-xs leading-relaxed text-cream/35">
+      <p>
+        © {year} Vapsolo. Todos los derechos reservados. Venta exclusiva a mayores de 18 años.
+        Los vapeadores no están recomendados para no fumadores, mujeres embarazadas o en periodo de lactancia.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+---
+const faqs = [
+  { q: '¿Cuántas caladas dura un Vapsolo?', a: 'Depende del modelo: el Mini ofrece unas 600 caladas, el Pro 4000 y el Max hasta 8000.' },
+  { q: '¿Necesito recargar el líquido?', a: 'No. Son desechables: vienen precargados de líquido. El Pro y el Max permiten recargar la batería por USB-C para apurar todas las caladas.' },
+  { q: '¿Cuánta nicotina llevan?', a: 'Disponibles en 0 mg (sin nicotina), 10 mg/ml y 20 mg/ml en sales de nicotina, el máximo permitido por la normativa europea.' },
+  { q: '¿Cuánto tarda el envío?', a: 'Entre 24 y 48 horas laborables en península, con embalaje discreto. Envío gratis a partir de 30€.' },
+  { q: '¿Tengo que ser mayor de edad?', a: 'Sí. La venta está reservada a mayores de 18 años. Verificamos la edad y podemos solicitar documentación en la entrega.' },
+  { q: '¿Cómo reciclo mi vaper usado?', a: 'Contiene batería de litio: no lo tires a la basura normal. Llévalo a un punto limpio o a un punto de recogida de pilas y dispositivos electrónicos.' },
+];
+---
+
+<section id="faq" class="mx-auto max-w-3xl px-6 py-24 md:py-32">
+  <div class="mb-14 text-center">
+    <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Dudas</p>
+    <h2 class="display-xl text-5xl md:text-7xl" data-reveal>Preguntas <span class="text-gradient">frecuentes</span></h2>
+  </div>
+
+  <div class="space-y-3" data-reveal-group>
+    {faqs.map((f) => (
+      <details data-reveal-item class="group rounded-2xl border border-cream/10 bg-ink-2 p-6 transition-colors open:border-berry/30">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-display text-lg font-semibold text-cream">
+          {f.q}
+          <span class="ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cream/10 text-berry transition-transform duration-300 group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-4 leading-relaxed text-cream/60">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

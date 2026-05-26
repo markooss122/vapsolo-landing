@@ -1,0 +1,45 @@
+---
+const flavors = [
+  { emoji: '🍉', name: 'Sandía Ice', notes: 'Dulce y refrescante', color: 'from-berry to-mint' },
+  { emoji: '🥭', name: 'Mango Tropical', notes: 'Jugoso e intenso', color: 'from-mango to-berry' },
+  { emoji: '🫐', name: 'Blueberry Mix', notes: 'Frutos del bosque', color: 'from-grape to-ice' },
+  { emoji: '🍓', name: 'Fresa Crema', notes: 'Suave y goloso', color: 'from-berry to-mango' },
+  { emoji: '🍇', name: 'Uva Helada', notes: 'Clásico con toque ice', color: 'from-grape to-berry' },
+  { emoji: '🍋', name: 'Limón Mojito', notes: 'Cítrico y fresco', color: 'from-mint to-ice' },
+  { emoji: '🍑', name: 'Melocotón', notes: 'Dulce de verano', color: 'from-mango to-berry' },
+  { emoji: '🌿', name: 'Menta Polar', notes: 'Frescor extremo', color: 'from-mint to-ice' },
+];
+---
+
+<section id="sabores" data-horizontal class="relative bg-ink">
+  <div class="flex h-screen items-center overflow-hidden">
+    <div data-htrack class="flex items-center gap-8 px-[8vw] will-change-transform">
+      <!-- Panel de intro -->
+      <div class="flex w-[80vw] shrink-0 flex-col justify-center md:w-[42vw]">
+        <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry">/ La colección</p>
+        <h2 class="display-xl text-6xl md:text-8xl">Más de 20<br /><span class="text-gradient">sabores</span></h2>
+        <p class="mt-6 max-w-sm text-lg text-cream/55">Desliza para recorrerlos. Encuentra el tuyo… o cámbialo cada semana.</p>
+        <span class="mt-8 inline-flex items-center gap-2 text-sm text-cream/40">Arrastra <span aria-hidden="true">→</span></span>
+      </div>
+
+      {flavors.map((f) => (
+        <article class={`group relative flex h-[62vh] w-[78vw] shrink-0 flex-col justify-between overflow-hidden rounded-[2rem] bg-gradient-to-br ${f.color} p-8 sm:w-[46vw] md:w-[30vw]`}>
+          <div class="text-7xl drop-shadow-lg transition-transform duration-500 group-hover:scale-110">{f.emoji}</div>
+          <div>
+            <h3 class="font-display text-3xl font-extrabold text-white">{f.name}</h3>
+            <p class="mt-1 text-white/85">{f.notes}</p>
+          </div>
+          <span class="absolute right-6 top-6 text-sm font-medium text-white/60">{String(flavors.indexOf(f) + 1).padStart(2, '0')}</span>
+        </article>
+      ))}
+
+      <!-- Panel de cierre -->
+      <div class="flex w-[60vw] shrink-0 flex-col justify-center md:w-[30vw]">
+        <h3 class="display-xl text-4xl md:text-5xl">…y muchos<br /><span class="text-gradient">más</span></h3>
+        <a href="#productos" data-magnetic class="mt-6 inline-block w-max rounded-full bg-cream px-7 py-3.5 font-semibold text-ink transition-colors hover:bg-white">
+          Ver productos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

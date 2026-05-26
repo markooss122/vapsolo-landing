@@ -1,0 +1,27 @@
+---
+const reviews = [
+  { name: 'Laura M.', text: 'El sabor a sandía ice es brutal y dura muchísimo. La batería aguanta de verdad. Repito seguro.', stars: 5, avatar: '🙋‍♀️' },
+  { name: 'Diego R.', text: 'Pedí el Pro y me llegó al día siguiente, súper discreto. El mango está espectacular.', stars: 5, avatar: '🧑' },
+  { name: 'Carmen P.', text: 'Probé varios sabores con el pack y todos buenísimos. La menta polar es mi favorita del verano.', stars: 5, avatar: '👩' },
+];
+---
+
+<section id="opiniones" class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+  <div class="mb-16 max-w-2xl">
+    <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Opiniones</p>
+    <h2 class="display-xl text-5xl md:text-7xl" data-reveal>4,8 ★ de <span class="text-gradient">media</span></h2>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-3" data-reveal-group>
+    {reviews.map((r) => (
+      <figure data-reveal-item class="flex flex-col rounded-3xl border border-cream/10 bg-ink-2 p-8">
+        <div class="text-mango">{'★'.repeat(r.stars)}</div>
+        <blockquote class="mt-4 flex-1 text-lg leading-relaxed text-cream/80">“{r.text}”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-xl">{r.avatar}</span>
+          <span class="font-semibold text-cream">{r.name}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

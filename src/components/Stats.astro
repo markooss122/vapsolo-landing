@@ -1,0 +1,21 @@
+---
+const stats = [
+  { count: '8000', suffix: '', label: 'caladas por unidad' },
+  { count: '20', suffix: '+', label: 'sabores distintos' },
+  { count: '12000', suffix: '+', label: 'pedidos enviados' },
+  { count: '48', suffix: 'h', label: 'entrega máxima' },
+];
+---
+
+<section class="border-y border-cream/10 bg-ink-2 py-20">
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-6 md:grid-cols-4" data-reveal-group>
+    {stats.map((s) => (
+      <div data-reveal-item class="text-center">
+        <p class="display-xl text-5xl text-gradient md:text-6xl">
+          <span data-count={s.count} data-suffix={s.suffix}>0{s.suffix}</span>
+        </p>
+        <p class="mt-2 text-sm uppercase tracking-wider text-cream/50">{s.label}</p>
+      </div>
+    ))}
+  </div>
+</section>
