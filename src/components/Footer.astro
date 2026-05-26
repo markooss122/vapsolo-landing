@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const year = new Date().getFullYear();
 const cols = [
   { title: 'Tienda', links: ['Desechables', 'Sabores', 'Packs', 'Novedades'] },
@@ -15,7 +17,7 @@ const cols = [
 <footer class="border-t border-cream/10 bg-ink text-cream/65">
   <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.5fr_repeat(3,1fr)]">
     <div>
-      <span class="font-display text-2xl font-extrabold tracking-tight text-cream">Vapsolo</span>
+      <Logo iconClass="h-10 w-10" textClass="text-2xl" />
       <p class="mt-4 max-w-xs text-sm leading-relaxed">
         Vapers desechables con sabor de verdad. Calidad certificada y envío rápido a toda España.
       </p>

@@ -1,0 +1,40 @@
+---
+interface Props {
+  class?: string;
+  iconClass?: string;
+  textClass?: string;
+  showText?: boolean;
+}
+const {
+  class: cls = '',
+  iconClass = 'h-9 w-9',
+  textClass = 'text-xl',
+  showText = true,
+} = Astro.props;
+
+// id único para el degradado (evita colisiones si hay varios logos en la página)
+const uid = 'vg-' + Math.random().toString(36).slice(2, 8);
+---
+
+<span class={`inline-flex items-center gap-2.5 ${cls}`}>
+  <svg class={iconClass} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id={uid} x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#8b5cf6" />
+        <stop offset="0.5" stop-color="#ff4d8d" />
+        <stop offset="1" stop-color="#ffb020" />
+      </linearGradient>
+    </defs>
+    <rect width="48" height="48" rx="13" fill={`url(#${uid})`} />
+    <!-- Vapor que asciende -->
+    <path d="M24 16 q -3.5 -3 0 -6 q 3.5 -3 0 -6" stroke="#fff" stroke-width="2.3" stroke-linecap="round" opacity="0.85" />
+    <!-- V de Vap -->
+    <path d="M13.5 18 L24 33.5 L34.5 18" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+
+  {showText && (
+    <span class={`font-display font-extrabold leading-none tracking-tight text-cream ${textClass}`}>
+      VapShop <span class="text-gradient">Zgz</span>
+    </span>
+  )}
+</span>

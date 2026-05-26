@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const links = [
   { href: '#sabores', label: 'Sabores' },
   { href: '#productos', label: 'Productos' },
@@ -9,9 +11,8 @@ const links = [
 
 <header id="site-nav" class="fixed inset-x-0 top-0 z-50">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="#hero" class="flex items-center gap-2.5" aria-label="Inicio">
-      <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-brand font-display text-lg font-extrabold text-white">V</span>
-      <span class="font-display text-xl font-extrabold tracking-tight text-cream">Vapsolo</span>
+    <a href="#hero" aria-label="VapShop Zgz — Inicio">
+      <Logo />
     </a>
 
     <ul class="hidden items-center gap-8 md:flex">
