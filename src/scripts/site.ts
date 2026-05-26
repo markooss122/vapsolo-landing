@@ -145,7 +145,7 @@ function initFrameSequence() {
   };
 
   const resize = () => {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     cw = window.innerWidth;
     ch = window.innerHeight;
     canvas.width = Math.floor(cw * dpr);
@@ -153,6 +153,8 @@ function initFrameSequence() {
     canvas.style.width = cw + 'px';
     canvas.style.height = ch + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     render();
   };
 
