@@ -6,19 +6,25 @@ const steps = [
 ];
 ---
 
-<section id="como-funciona" class="mx-auto max-w-6xl px-6 py-24 md:py-32">
-  <div class="mb-16 max-w-2xl">
-    <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Cómo funciona</p>
-    <h2 class="display-xl text-5xl md:text-7xl" data-reveal>Tan fácil como <span class="text-gradient">1, 2, 3</span></h2>
-  </div>
+<section id="como-funciona" class="relative overflow-hidden py-24 md:py-32">
+  <div class="mesh"></div>
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <div class="mb-16 max-w-2xl">
+      <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Cómo funciona</p>
+      <h2 class="display-xl text-5xl md:text-7xl" data-split>Tan fácil como <span class="text-gradient">1, 2, 3</span></h2>
+    </div>
 
-  <div class="grid gap-px overflow-hidden rounded-3xl border border-cream/10 bg-cream/10 md:grid-cols-3" data-reveal-group>
-    {steps.map((s) => (
-      <div data-reveal-item class="bg-ink p-10">
-        <span class="display-xl text-7xl text-cream/10">{s.n}</span>
-        <h3 class="mt-4 font-display text-2xl font-bold text-cream">{s.title}</h3>
-        <p class="mt-2 text-cream/55">{s.text}</p>
-      </div>
-    ))}
+    <div class="grid gap-6 md:grid-cols-3" data-reveal-group>
+      {steps.map((s) => (
+        <div data-reveal-item class="group relative overflow-hidden rounded-3xl border border-cream/10 bg-cream/[0.03] p-9 backdrop-blur-sm transition-colors duration-300 hover:bg-cream/[0.06]">
+          <span class="absolute -right-3 -top-6 font-display text-[7rem] font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(247,243,236,0.12)] transition-colors duration-300 group-hover:[-webkit-text-stroke-color:rgba(255,77,141,0.4)]">{s.n}</span>
+          <div class="relative">
+            <span class="font-display text-2xl font-extrabold text-gradient">{s.n}</span>
+            <h3 class="mt-4 font-display text-2xl font-bold text-cream">{s.title}</h3>
+            <p class="mt-2 leading-relaxed text-cream/55">{s.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

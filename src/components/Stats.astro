@@ -7,14 +7,15 @@ const stats = [
 ];
 ---
 
-<section class="border-y border-cream/10 bg-ink-2 py-20">
-  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-6 md:grid-cols-4" data-reveal-group>
+<section class="relative overflow-hidden border-y border-cream/10 bg-ink-2 py-20">
+  <div class="mesh opacity-70"></div>
+  <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-2 gap-y-12 px-6 md:grid-cols-4 md:divide-x md:divide-cream/10" data-reveal-group>
     {stats.map((s) => (
-      <div data-reveal-item class="text-center">
-        <p class="display-xl text-5xl text-gradient md:text-6xl">
+      <div data-reveal-item class="px-4 text-center">
+        <p class="display-xl text-6xl text-gradient md:text-7xl">
           <span data-count={s.count} data-suffix={s.suffix}>0{s.suffix}</span>
         </p>
-        <p class="mt-2 text-sm uppercase tracking-wider text-cream/50">{s.label}</p>
+        <p class="mt-3 text-sm uppercase tracking-[0.2em] text-cream/45">{s.label}</p>
       </div>
     ))}
   </div>

@@ -1,27 +1,37 @@
 ---
 const reviews = [
-  { name: 'Laura M.', text: 'El sabor a sandía ice es brutal y dura muchísimo. La batería aguanta de verdad. Repito seguro.', stars: 5, avatar: '🙋‍♀️' },
-  { name: 'Diego R.', text: 'Pedí el Pro y me llegó al día siguiente, súper discreto. El mango está espectacular.', stars: 5, avatar: '🧑' },
-  { name: 'Carmen P.', text: 'Probé varios sabores con el pack y todos buenísimos. La menta polar es mi favorita del verano.', stars: 5, avatar: '👩' },
+  { name: 'Laura M.', city: 'Zaragoza', text: 'El sabor a sandía ice es brutal y dura muchísimo. La batería aguanta de verdad. Repito seguro.', stars: 5, avatar: '🙋‍♀️' },
+  { name: 'Diego R.', city: 'Zaragoza', text: 'Pedí el Pro y me llegó al día siguiente, súper discreto. El mango está espectacular.', stars: 5, avatar: '🧑' },
+  { name: 'Carmen P.', city: 'Huesca', text: 'Probé varios sabores con el pack y todos buenísimos. La menta polar es mi favorita del verano.', stars: 5, avatar: '👩' },
 ];
 ---
 
-<section id="opiniones" class="mx-auto max-w-6xl px-6 py-24 md:py-32">
-  <div class="mb-16 max-w-2xl">
-    <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Opiniones</p>
-    <h2 class="display-xl text-5xl md:text-7xl" data-reveal>4,8 ★ de <span class="text-gradient">media</span></h2>
-  </div>
+<section id="opiniones" class="relative overflow-hidden py-24 md:py-32">
+  <div class="mesh"></div>
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    <div class="mb-16 flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="mb-4 font-display text-sm font-semibold uppercase tracking-[0.3em] text-berry" data-reveal>/ Opiniones</p>
+        <h2 class="display-xl text-5xl md:text-7xl" data-split>4,8 ★ de <span class="text-gradient">media</span></h2>
+      </div>
+      <p class="max-w-xs text-cream/55" data-reveal>Más de 1.000 pedidos enviados. Esto es lo que opinan nuestros clientes.</p>
+    </div>
 
-  <div class="grid gap-6 md:grid-cols-3" data-reveal-group>
-    {reviews.map((r) => (
-      <figure data-reveal-item class="flex flex-col rounded-3xl border border-cream/10 bg-ink-2 p-8">
-        <div class="text-mango">{'★'.repeat(r.stars)}</div>
-        <blockquote class="mt-4 flex-1 text-lg leading-relaxed text-cream/80">“{r.text}”</blockquote>
-        <figcaption class="mt-6 flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-xl">{r.avatar}</span>
-          <span class="font-semibold text-cream">{r.name}</span>
-        </figcaption>
-      </figure>
-    ))}
+    <div class="grid gap-6 md:grid-cols-3" data-reveal-group>
+      {reviews.map((r) => (
+        <figure data-reveal-item class="group relative flex flex-col overflow-hidden rounded-3xl border border-cream/10 bg-cream/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-berry/30">
+          <span class="absolute right-6 top-2 font-serif text-[6rem] leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(255,77,141,0.18)]" aria-hidden="true">”</span>
+          <div class="relative z-10 text-mango tracking-widest">{'★'.repeat(r.stars)}</div>
+          <blockquote class="relative z-10 mt-4 flex-1 text-lg leading-relaxed text-cream/85">“{r.text}”</blockquote>
+          <figcaption class="relative z-10 mt-6 flex items-center gap-3 border-t border-cream/10 pt-5">
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-brand text-xl">{r.avatar}</span>
+            <span>
+              <span class="block font-semibold text-cream">{r.name}</span>
+              <span class="block text-sm text-cream/45">{r.city}</span>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   </div>
 </section>
