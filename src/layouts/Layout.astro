@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'Vapsolo — El sabor que no se apaga',
-  description = 'Vapers desechables Vapsolo: hasta 40000 caladas, sabores intensos y batería para todo el día. Envío 24/48h. Solo mayores de 18 años.',
+  title = 'Vap Esssence — El sabor que no se apaga',
+  description = 'Vap Esssence: vapers desechables con hasta 40000 caladas, sabores intensos y batería para todo el día. Tu tienda de vapeo en Zaragoza. Envío 24/48h. Solo mayores de 18 años.',
 } = Astro.props;
 ---
 
@@ -34,7 +34,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -42,7 +42,7 @@ const {
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[10000] flex items-center justify-center bg-ink">
       <div id="pre-content" class="flex w-full max-w-xs flex-col items-center gap-6 px-6">
-        <span class="font-display text-xl font-extrabold tracking-[0.35em] text-cream">VAPSHOP ZGZ</span>
+        <span class="font-serif text-3xl text-cream" style="font-weight:600">Vap <span class="italic text-gradient">Esssence</span></span>
         <div class="h-px w-full overflow-hidden bg-cream/15">
           <div id="pre-bar" class="h-full origin-left scale-x-0 bg-gradient-brand"></div>
         </div>
