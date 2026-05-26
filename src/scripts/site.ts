@@ -262,6 +262,15 @@ function splitChars(el: HTMLElement) {
       });
       return [frag];
     }
+    // No partir spans con degradado (background-clip:text): se animan en bloque
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const elNode = node as HTMLElement;
+      if (elNode.classList?.contains('text-gradient') || elNode.hasAttribute?.('data-nosplit')) {
+        const clone = node.cloneNode(true) as HTMLElement;
+        clone.classList.add('char', 'inline-block');
+        return [clone];
+      }
+    }
     const clone = node.cloneNode(false);
     node.childNodes.forEach((c) => walk(c).forEach((n) => clone.appendChild(n)));
     return [clone];

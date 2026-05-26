@@ -23,3 +23,5 @@ pnpm-debug.log*
 # screenshots de verificación
 shots/
 .vercel
+
+.vercel

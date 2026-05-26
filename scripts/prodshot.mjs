@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ channel: 'msedge' });
+const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
+await p.addInitScript(() => localStorage.setItem('vapsolo_age_ok','true'));
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('https://vapsolo-landing.vercel.app/', { waitUntil:'load' });
+await p.waitForTimeout(7000);
+await p.screenshot({ path: 'shots/prod_top.png' });
+await p.evaluate(()=>window.scrollTo(0, document.body.scrollHeight*0.12));
+await p.waitForTimeout(1200);
+await p.screenshot({ path: 'shots/prod_hero.png' });
+console.log('ERRORS', errs.length?errs.slice(0,10):'none');
+await b.close();
